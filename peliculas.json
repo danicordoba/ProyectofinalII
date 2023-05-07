@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "título": "Cadena perpetua",
+        "director": "Frank Darabont",
+        "género": "Drama",
+        "sinopsis": "Andy Dufresne es encarcelado por matar a su esposa y al amante de esta. Tras una dura adaptación, intenta mejorar las condiciones de la prisión y dar esperanza a sus compañeros.",
+        "imagen": "1.png"
+    },
+    {
+        "id": 2,
+        "título": "El padrino",
+        "director": "Francis Ford Coppola",
+        "género": "Drama",
+        "sinopsis": "El envejecido patriarca de una dinastía del crimen organizado en la ciudad de Nueva York de la posguerra transfiere el control de su imperio clandestino a su reacio hijo menor.",
+        "imagen": "2.jpg"
+    },
+    {
+        "id": 3,
+        "título": "El caballero oscuro",
+        "director": "Christopher Nolan",
+        "género": "Acción",
+        "sinopsis": "Cuando la amenaza conocida como el Joker causa estragos y el caos en Gotham City, Batman debe aceptar una de las mayores pruebas psicológicas y físicas para luchar contra la injusticia.",
+        "imagen": "3.jpg"
+    },
+    {
+        "id": 4,
+        "título": "El padrino (parte II)",
+        "director": "Francis Ford Coppola",
+        "género": "Drama",
+        "sinopsis": "Se retratan los inicios de la vida y la carrera de Vito Corleone en el Nueva York de los años 20, mientras su hijo, Michael, amplía y refuerza su control sobre el sindicato del crimen familiar.",
+        "imagen": "4.jpg"
+    },
+    {
+        "id": 5,
+        "título": "12 hombres sin piedad",
+        "director": "Sidney Lumet",
+        "género": "Drama",
+        "sinopsis": "Un miembro del jurado trata de evitar un error judicial obligando al resto del jurado a reconsiderar las pruebas.",
+        "imagen": "5.jpg"
+    },
+    {
+        "id": 7,
+        "título": "La lista de Schindler",
+        "director": "Steven Spielberg",
+        "género": "Drama",
+        "sinopsis": "En la Polonia ocupada por los alemanes durante la Segunda Guerra Mundial, el industrial Oskar Schindler se preocupa por sus trabajadores judíos tras presenciar su persecución por los nazis.",
+        "imagen": "7.jpg"
+    },
+    {
+        "id": 8,
+        "título": "El señor de los anillos: El retorno del rey",
+        "director": "Peter Jackson",
+        "género": "Fantasía",
+        "sinopsis": "Gandalf y Aragorn lideran el mundo de los hombres contra la armada de Sauron para distraer su atención de Frodo y Sam, quienes se aproximan al Monte del Destino con el Anillo Único.",
+        "imagen": "8.jpg"
+    },
+    {
+        "id": 9,
+        "título": "Pulp Fiction",
+        "director": "Quentin Tarantino",
+        "género": "Acción",
+        "sinopsis": "Las vidas de dos mafiosos, un boxeador, la esposa de un gánster y un par de bandidos se entrelazan en cuatro historias de violencia y redención.",
+        "imagen": "9.jpg"
+    },
+    {
+        "id": 10,
+        "título": "El señor de los anillos: La comunidad del anillo",
+        "director": "Peter Jackson",
+        "género": "Fantasía",
+        "sinopsis": "Un hobbit de la Comarca y ocho compañeros emprenden un viaje para destruir el poderoso Anillo Único y salvar la Tierra Media del Señor Oscuro Sauron.",
+        "imagen": "10.jpg"
+    },
+    {
+        "id": 11,
+        "título": "El bueno, el feo y el malo",
+        "director": "Sergio Leone",
+        "género": "Acción",
+        "sinopsis": "Durante la Guerra de Secesión, tres cazarrecompensas se lanzan a la búsqueda de un tesoro que ninguno puede localizar sin la ayuda de los otros dos.",
+        "imagen": "11.jpg"
+    },
+    {
+        "id": 12,
+        "título": "Forrest Gump",
+        "director": "Robert Zemeckis",
+        "género": "Comedia",
+        "sinopsis": "Las presidencias de Kennedy y Johnson, los acontecimientos de Vietnam, el Watergate y otros eventos históricos se desarrollan a través de la perspectiva de un hombre de Alabama con un coeficiente intelectual de 75.",
+        "imagen": "12.jpg"
+    },
+    {
+        "id": 13,
+        "título": "Pelicula12",
+        "director": "Sam Peckinpah",
+        "género": "Aventuras",
+        "sinopsis": "",
+        "imagen": ""
+    },
+    {
+        "id": 14,
+        "título": "Pelicula12eee",
+        "director": "Sam Peckinpah",
+        "género": "Aventuras",
+        "sinopsis": "",
+        "imagen": ""
+    }
+]
