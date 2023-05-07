@@ -1,106 +1,138 @@
 [
     {
         "id": 1,
-        "título": "Cadena perpetua",
+        "titulo": "Cadena perpetua",
         "director": "Frank Darabont",
-        "género": "Drama",
-        "sinopsis": "Andy Dufresne es encarcelado por matar a su esposa y al amante de esta. Tras una dura adaptación, intenta mejorar las condiciones de la prisión y dar esperanza a sus compañeros.",
+        "genero": "Drama",
+        "sinopsis": "Andy Dufresne es encarcelado por matar a su esposa y al amante de esta. Tras una dura adaptacion, intenta mejorar las condiciones de la prision y dar esperanza a sus companeros.",
         "imagen": "1.png"
     },
     {
         "id": 2,
-        "título": "El padrino",
+        "titulo": "El padrino",
         "director": "Francis Ford Coppola",
-        "género": "Drama",
-        "sinopsis": "El envejecido patriarca de una dinastía del crimen organizado en la ciudad de Nueva York de la posguerra transfiere el control de su imperio clandestino a su reacio hijo menor.",
+        "genero": "Drama",
+        "sinopsis": "El envejecido patriarca de una dinastia del crimen organizado en la ciudad de Nueva York de la posguerra transfiere el control de su imperio clandestino a su reacio hijo menor.",
         "imagen": "2.jpg"
     },
     {
         "id": 3,
-        "título": "El caballero oscuro",
+        "titulo": "El caballero oscuro",
         "director": "Christopher Nolan",
-        "género": "Acción",
-        "sinopsis": "Cuando la amenaza conocida como el Joker causa estragos y el caos en Gotham City, Batman debe aceptar una de las mayores pruebas psicológicas y físicas para luchar contra la injusticia.",
+        "genero": "Accion",
+        "sinopsis": "Cuando la amenaza conocida como el Joker causa estragos y el caos en Gotham City, Batman debe aceptar una de las mayores pruebas psicologicas y fisicas para luchar contra la injusticia.",
         "imagen": "3.jpg"
     },
     {
         "id": 4,
-        "título": "El padrino (parte II)",
+        "titulo": "El padrino (parte II)",
         "director": "Francis Ford Coppola",
-        "género": "Drama",
-        "sinopsis": "Se retratan los inicios de la vida y la carrera de Vito Corleone en el Nueva York de los años 20, mientras su hijo, Michael, amplía y refuerza su control sobre el sindicato del crimen familiar.",
+        "genero": "Drama",
+        "sinopsis": "Se retratan los inicios de la vida y la carrera de Vito Corleone en el Nueva York de los anos 20, mientras su hijo, Michael, amplia y refuerza su control sobre el sindicato del crimen familiar.",
         "imagen": "4.jpg"
     },
     {
         "id": 5,
-        "título": "12 hombres sin piedad",
-        "director": "Sidney Lumet",
-        "género": "Drama",
-        "sinopsis": "Un miembro del jurado trata de evitar un error judicial obligando al resto del jurado a reconsiderar las pruebas.",
-        "imagen": "5.jpg"
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "sinopsis": "dsadsadas15",
+        "imagen": "sdasda15"
     },
     {
         "id": 7,
-        "título": "La lista de Schindler",
+        "titulo": "La lista de Schindler",
         "director": "Steven Spielberg",
-        "género": "Drama",
-        "sinopsis": "En la Polonia ocupada por los alemanes durante la Segunda Guerra Mundial, el industrial Oskar Schindler se preocupa por sus trabajadores judíos tras presenciar su persecución por los nazis.",
+        "genero": "Drama",
+        "sinopsis": "En la Polonia ocupada por los alemanes durante la Segunda Guerra Mundial, el industrial Oskar Schindler se preocupa por sus trabajadores judios tras presenciar su persecucion por los nazis.",
         "imagen": "7.jpg"
     },
     {
         "id": 8,
-        "título": "El señor de los anillos: El retorno del rey",
+        "titulo": "El senor de los anillos: El retorno del rey",
         "director": "Peter Jackson",
-        "género": "Fantasía",
-        "sinopsis": "Gandalf y Aragorn lideran el mundo de los hombres contra la armada de Sauron para distraer su atención de Frodo y Sam, quienes se aproximan al Monte del Destino con el Anillo Único.",
+        "genero": "Fantasia",
+        "sinopsis": "Gandalf y Aragorn lideran el mundo de los hombres contra la armada de Sauron para distraer su atencion de Frodo y Sam, quienes se aproximan al Monte del Destino con el Anillo Unico.",
         "imagen": "8.jpg"
     },
     {
-        "id": 9,
-        "título": "Pulp Fiction",
-        "director": "Quentin Tarantino",
-        "género": "Acción",
-        "sinopsis": "Las vidas de dos mafiosos, un boxeador, la esposa de un gánster y un par de bandidos se entrelazan en cuatro historias de violencia y redención.",
-        "imagen": "9.jpg"
-    },
-    {
         "id": 10,
-        "título": "El señor de los anillos: La comunidad del anillo",
-        "director": "Peter Jackson",
-        "género": "Fantasía",
-        "sinopsis": "Un hobbit de la Comarca y ocho compañeros emprenden un viaje para destruir el poderoso Anillo Único y salvar la Tierra Media del Señor Oscuro Sauron.",
-        "imagen": "10.jpg"
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "sinopsis": "dsadseeeeeeeeeeeeeadas15",
+        "imagen": "sdasda15"
     },
     {
         "id": 11,
-        "título": "El bueno, el feo y el malo",
+        "titulo": "El bueno, el feo y el malo",
         "director": "Sergio Leone",
-        "género": "Acción",
-        "sinopsis": "Durante la Guerra de Secesión, tres cazarrecompensas se lanzan a la búsqueda de un tesoro que ninguno puede localizar sin la ayuda de los otros dos.",
+        "genero": "Accion",
+        "sinopsis": "Durante la Guerra de Secesion, tres cazarrecompensas se lanzan a la busqueda de un tesoro que ninguno puede localizar sin la ayuda de los otros dos.",
         "imagen": "11.jpg"
     },
     {
         "id": 12,
-        "título": "Forrest Gump",
+        "titulo": "Forrest Gump",
         "director": "Robert Zemeckis",
-        "género": "Comedia",
-        "sinopsis": "Las presidencias de Kennedy y Johnson, los acontecimientos de Vietnam, el Watergate y otros eventos históricos se desarrollan a través de la perspectiva de un hombre de Alabama con un coeficiente intelectual de 75.",
+        "genero": "Comedia",
+        "sinopsis": "Las presidencias de Kennedy y Johnson, los acontecimientos de Vietnam, el Watergate y otros eventos historicos se desarrollan a traves de la perspectiva de un hombre de Alabama con un coeficiente intelectual de 75.",
         "imagen": "12.jpg"
     },
     {
         "id": 13,
-        "título": "Pelicula12",
+        "titulo": "Pelicula12",
         "director": "Sam Peckinpah",
-        "género": "Aventuras",
+        "genero": "Aventuras",
         "sinopsis": "",
         "imagen": ""
     },
     {
         "id": 14,
-        "título": "Pelicula12eee",
+        "titulo": "Pelicula12eee",
         "director": "Sam Peckinpah",
-        "género": "Aventuras",
+        "genero": "Aventuras",
         "sinopsis": "",
         "imagen": ""
+    },
+    {
+        "id": 15,
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "imagen": "sdasda15",
+        "sinopsis": "dsadsadas15"
+    },
+    {
+        "id": 16,
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "imagen": "sdasda15",
+        "sinopsis": "dsadsadas15"
+    },
+    {
+        "id": 17,
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "imagen": "sdasda15",
+        "sinopsis": "dsadsadas15"
+    },
+    {
+        "id": 18,
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "imagen": "sdasda15",
+        "sinopsis": "dsadsadas15"
+    },
+    {
+        "id": 19,
+        "titulo": "asd15",
+        "director": "asd215",
+        "genero": "sdadasdassa15",
+        "imagen": "sdasda15",
+        "sinopsis": "dsadsadas15"
     }
 ]

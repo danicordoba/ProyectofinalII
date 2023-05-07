@@ -1,0 +1,20 @@
+[
+    {
+        "ID-comentario": 1,
+        "ID-pelicula": 2,
+        "autor": "dani",
+        "comentario": "comentario"
+    },
+    {
+        "ID-comentario": 2,
+        "ID-pelicula": 5,
+        "autor": "mauro",
+        "comentario": "comentario"
+    },
+    {
+        "ID-comentario": 3,
+        "ID-pelicula": 10,
+        "autor": "dania",
+        "comentario": "comentario"
+    }
+]

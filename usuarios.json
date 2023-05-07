@@ -1,10 +1,22 @@
 [
     {
         "nombre": "dani",
-        "contraseña": "dani123"
+        "contraseña": "dani123",
+        "permiso": "admin"
     },
     {
         "nombre": "mauro",
-        "contraseña": "mauro123"
+        "contraseña": "mauro123",
+        "permiso": "admin"
+    },
+    {
+        "nombre": "dania",
+        "contraseña": "dani123",
+        "permiso": "usuario"
+    },
+    {
+        "nombre": "daniañ",
+        "contraseña": "dani123",
+        "permiso": "usuario"
     }
 ]
