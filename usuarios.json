@@ -18,5 +18,15 @@
         "nombre": "daniañ",
         "contraseña": "dani123",
         "permiso": "usuario"
+    },
+    {
+        "nombre": "dani2",
+        "contraseña": "dani123",
+        "permiso": "usuario"
+    },
+    {
+        "nombre": "dani3",
+        "contraseña": "dani123",
+        "permisos": "usuario"
     }
 ]

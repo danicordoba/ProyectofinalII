@@ -40,14 +40,6 @@
         "imagen": "sdasda15"
     },
     {
-        "id": 7,
-        "titulo": "La lista de Schindler",
-        "director": "Steven Spielberg",
-        "genero": "Drama",
-        "sinopsis": "En la Polonia ocupada por los alemanes durante la Segunda Guerra Mundial, el industrial Oskar Schindler se preocupa por sus trabajadores judios tras presenciar su persecucion por los nazis.",
-        "imagen": "7.jpg"
-    },
-    {
         "id": 8,
         "titulo": "El senor de los anillos: El retorno del rey",
         "director": "Peter Jackson",

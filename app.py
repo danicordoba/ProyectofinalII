@@ -19,6 +19,7 @@ def login():
         for usuario in usuarios:
             if usuario["nombre"] == datosLogin["nombre"] and usuario["contraseña"] == datosLogin["contraseña"]:
                 session["usuario"] = usuario["nombre"]
+                session["permiso"] = usuario["permiso"]
                 return jsonify({"logueado": session["usuario"]}), 200
         return jsonify({"error": "no existe el usuario o la contraseña es incorrecta"}), 401
     
@@ -36,21 +37,115 @@ def registro():
             if usuario["nombre"] == datosRegistro["nombre"]:
                 return jsonify({"error": "ya existe un usuario con ese nombre"}), 400
         with open("usuarios.json", "w", encoding="utf-8") as u:
-            usuarios.append(datosRegistro)
+            usuarios.append({"nombre": datosRegistro["nombre"], 
+                             "contraseña": datosRegistro["contraseña"],
+                             "permisos": "usuario"})
             json.dump(usuarios, u, ensure_ascii= False, indent=4)
-            return jsonify({"usuario registrado": datosRegistro}), 200
-
+            return jsonify({"usuario registrado": datosRegistro["nombre"]}), 200
+        
+#editar usuario
+@app.route('/usuario', methods=['PUT'])
+def editar_usuario():
+    if not "usuario" in session:
+        return jsonify({"error": "no estas logueado"}), 401
+    else:
+        datosUsuario = request.get_json()
+        with open("usuarios.json", "r", encoding="utf-8") as u:
+            usuarios = json.load(u)
+            for usuario in usuarios:
+                if usuario["nombre"] == session["usuario"]:
+                    if "nombre" in datosUsuario:
+                        usuario["nombre"] = datosUsuario["nombre"]
+                        session["usuario"] = usuario["nombre"]
+                    if "contraseña" in datosUsuario:
+                        usuario["contraseña"] = datosUsuario["contraseña"]
+        with open("usuarios.json", "w", encoding="utf-8") as u:
+            json.dump(usuarios, u, ensure_ascii= False, indent=4)
+            return jsonify({"usuario editado": session["usuario"]}), 200
+        
 #ABM directores
 @app.route("/directores")
-def directores():
-    with open("directores.json", "r", encoding="utf-8") as directores:
-        return jsonify({"directores":json.load(directores)}), 200
+@app.route("/directores/<director>", methods=["POST", "DELETE"])
+def directores(director=None):
+    if not "usuario" in session:
+        return jsonify({"error": "no estas logueado"}), 401
+    else:
+        if request.method == "GET":
+            with open("directores.json", "r", encoding="utf-8") as directores:
+                return jsonify({"directores del sistema":json.load(directores)}), 200
+        if request.method == "POST":
+            if session["permiso"] == "admin":
+                if not director:
+                    return jsonify({"error": "no hay director en el parametro enviado"}), 400
+                with open("directores.json", "r", encoding="utf-8") as d:
+                    directores = json.load(d)
+                    for d in directores:
+                        if d == director:
+                            return jsonify({"error": "ya existe ese director"}), 400
+                    with open("directores.json", "w", encoding="utf-8") as d:
+                        directores.append(director)
+                        json.dump(directores, d, ensure_ascii= False, indent=4)
+                        return jsonify({"director agregado": director}), 200
+            else:
+                return jsonify({"error": "necesitas permiso de admin para agregar un director"}), 403
+        if request.method == "DELETE":
+            if session["permiso"] == "admin":
+                if not director:
+                    return jsonify({"error": "no hay director en el parametro enviado"}), 400
+                with open("directores.json", "r", encoding="utf-8") as d:
+                    directores = json.load(d)
+                    for d in directores:
+                        if d == director:
+                            directores.remove(d)
+                            with open("directores.json", "w", encoding="utf-8") as d:
+                                json.dump(directores, d, ensure_ascii= False, indent=4)
+                                return jsonify({"director eliminado": director}), 200
+                    return jsonify({"error": "no existe ese director"}), 400
+            else:
+                return jsonify({"error": "necesitas permiso de admin para eliminar un director"}), 403
+
+    
     
 #ABM géneros
 @app.route("/generos")
-def generos():
-    with open("generos.json", "r", encoding="utf-8") as generos:
-        return jsonify({"géneros":json.load(generos)}), 200
+@app.route("/generos/<genero>", methods=["POST", "DELETE"])
+def generos(genero=None):
+    if not "usuario" in session:
+        return jsonify({"error": "no estas logueado"}), 401
+    else:
+        if request.method == "GET":
+            with open("generos.json", "r", encoding="utf-8") as generos:
+                return jsonify({"generos del sistema":json.load(generos)}), 200
+        if request.method == "POST":
+            if session["permiso"] == "admin":
+                if not genero:
+                    return jsonify({"error": "no hay genero en el parametro enviado"}), 400
+                with open("generos.json", "r", encoding="utf-8") as g:
+                    generos = json.load(g)
+                    for g in generos:
+                        if g == genero:
+                            return jsonify({"error": "ya existe ese genero"}), 400
+                    with open("generos.json", "w", encoding="utf-8") as g:
+                        generos.append(genero)
+                        json.dump(generos, g, ensure_ascii= False, indent=4)
+                        return jsonify({"genero agregado": genero}), 200
+            else:
+                return jsonify({"error": "necesitas permiso de admin para agregar un genero"}), 403
+        if request.method == "DELETE":
+            if session["permiso"] == "admin":
+                if not genero:
+                    return jsonify({"error": "no hay genero en el parametro enviado"}), 400
+                with open("generos.json", "r", encoding="utf-8") as g:
+                    generos = json.load(g)
+                    for g in generos:
+                        if g == genero:
+                            generos.remove(g)
+                            with open("generos.json", "w", encoding="utf-8") as g:
+                                json.dump(generos, g, ensure_ascii= False, indent=4)
+                                return jsonify({"genero eliminado": genero}), 200
+                    return jsonify({"error": "no existe ese genero"}), 400
+            else:
+                return jsonify({"error": "necesitas permiso de admin para eliminar un genero"}), 403
     
 #Endpoint peliculas dirigidas por un director en particular
 @app.route("/peliculas/directores/<director>")
@@ -112,6 +207,18 @@ def nueva_pelicula():
 def peliculas():
     with open("peliculas.json", "r", encoding="utf-8") as peliculas:
         return jsonify({"peliculas":json.load(peliculas)}), 200
+    
+@app.route("/peliculas/<int:id>")
+def pelicula(id):
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        with open("peliculas.json", "r", encoding="utf-8") as peliculas:
+            peliculas = json.load(peliculas)
+            for pelicula in peliculas:
+                if pelicula["id"] == id:
+                    return jsonify({"pelicula": pelicula}), 200
+            return jsonify({"error": "no existe pelicula con ese id"}), 400
 
 
 #modificar una pelicula
@@ -125,7 +232,6 @@ def modificar_pelicula(id):
             peliculas = json.load(p)
             for pelicula in peliculas:
                 if pelicula["id"] == id:
-                    print(pelicula["id"])
                     if "titulo" in editarPelicula:
                         pelicula["titulo"] = editarPelicula["titulo"]
                     if "director" in editarPelicula:
@@ -136,7 +242,6 @@ def modificar_pelicula(id):
                         pelicula["imagen"] = editarPelicula["imagen"]
                     if "sinopsis" in editarPelicula:
                         pelicula["sinopsis"] = editarPelicula["sinopsis"]
-                    print(pelicula)
         with open("peliculas.json", "w", encoding="utf-8") as p:
             json.dump(peliculas, p, indent=4)
         with open("peliculas.json", "r", encoding="utf-8") as p:
@@ -151,6 +256,13 @@ def eliminar_pelicula(id):
     if not "usuario" in session:
         return jsonify({"error": "no hay usuario logueado"}), 401
     else:
+        #eliminar una pelicula solo si esta no tiene comentarios de otros usuarios
+        with open("comentarios.json", "r", encoding="utf-8") as comentarios:
+            comentarios = json.load(comentarios)
+            for comentario in comentarios:
+                if comentario["ID-pelicula"] == id:
+                    if comentario["autor"] != session["usuario"]:
+                        return jsonify({"error": "la pelicula tiene comentarios de otros usuarios"}), 401
         with open("peliculas.json", "r", encoding="utf-8") as p:
             peliculas = json.load(p)
             for pelicula in peliculas:
@@ -158,7 +270,66 @@ def eliminar_pelicula(id):
                     peliculas.remove(pelicula)
         with open("peliculas.json", "w", encoding="utf-8") as p:
             json.dump(peliculas, p, indent=4)
-            return jsonify({"pelicula eliminada": peliculas}), 200
+            return jsonify({"pelicula eliminada": pelicula}), 200
+        
+#Endpoint comentarios de pelicula
+@app.route("/pelicula/<int:id>/comentarios")
+def comentarios_pelicula(id):
+    with open("comentarios.json", "r", encoding="utf-8") as comentarios:
+        comentarios = json.load(comentarios)
+        comentariosPelicula = []
+        for comentario in comentarios:
+            if comentario["ID-pelicula"] == id:
+                comentariosPelicula.append(comentario)
+        return jsonify({"comentarios de la pelicula": comentariosPelicula}), 200
+    
+#agregar comentario a pelicula
+@app.route("/pelicula/<int:id>/comentarios", methods= ["POST"])
+def agregar_comentario(id):
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        comentarioNuevo = request.get_json()
+        with open("comentarios.json", "r", encoding="utf-8") as c:
+            comentarios = json.load(c)
+            mayorId = max(comentarios, key=itemgetter("ID-comentario"))["ID-comentario"] + 1
+            nuevoComentario = {"ID-comentario": mayorId, 
+                               "ID-pelicula": id, 
+                               "autor": session["usuario"], 
+                               "comentario": comentarioNuevo["comentario"]}
+            comentarios.append(nuevoComentario)
+        with open("comentarios.json", "w", encoding="utf-8") as comentariosNuevos:
+            json.dump(comentarios, comentariosNuevos, indent=4)
+            return jsonify({"comentario agregado": nuevoComentario}), 200
+
+#modulo publico
+@app.route("/publico")
+def publico():
+    peliculasPublico = []
+    with open("peliculas.json", "r", encoding="utf-8") as p:
+        peliculas = json.load(p)
+        for pelicula in peliculas:
+            peliculasPublico.append(pelicula)
+        peliculasPublico = peliculasPublico[-10:]
+        peliculasPublico.sort(key = lambda json: json["id"], reverse=True)
+        return jsonify({"ultimas 10 peliculas agregadas": peliculasPublico}), 200  
+    
+#verificar que sos admin
+@app.route("/admin")
+def admin():
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        with open("usuarios.json", "r", encoding="utf-8") as u:
+            usuarios = json.load(u)
+            for usuario in usuarios:
+                if usuario["nombre"] == session["usuario"]:
+                    if usuario["permiso"] == "admin":
+                        return jsonify({"permiso": "admin"}), 200
+                    else:
+                        return jsonify({"permiso": "usuario"}), 200
+                    
+
 
 
 if __name__ == "__main__": 

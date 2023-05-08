@@ -13,8 +13,26 @@
     },
     {
         "ID-comentario": 3,
-        "ID-pelicula": 10,
-        "autor": "dania",
+        "ID-pelicula": 13,
+        "autor": "danian",
         "comentario": "comentario"
+    },
+    {
+        "ID-comentario": 4,
+        "ID-pelicula": 5,
+        "autor": "dani",
+        "comentario": "dasdasdas"
+    },
+    {
+        "ID-comentario": 5,
+        "ID-pelicula": 5,
+        "autor": "dani",
+        "comentario": "dasdasdas1111"
+    },
+    {
+        "ID-comentario": 6,
+        "ID-pelicula": 10,
+        "autor": "dani",
+        "comentario": "dasdasdas1111"
     }
 ]

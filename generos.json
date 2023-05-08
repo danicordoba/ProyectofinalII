@@ -1,5 +1,4 @@
 [
-    "Acción",
     "Aventuras",
     "Ciencia Ficción",
     "Comedia",
@@ -8,5 +7,6 @@
     "Fantasía",
     "Musical",
     "Suspense",
-    "Terror"
+    "Terror",
+    "obra"
 ]
