@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request, session
 import json
 from operator import itemgetter
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+CORS(app)
 
 
 #logueo de usuario
@@ -39,7 +41,7 @@ def registro():
         with open("usuarios.json", "w", encoding="utf-8") as u:
             usuarios.append({"nombre": datosRegistro["nombre"], 
                              "contraseña": datosRegistro["contraseña"],
-                             "permisos": "usuario"})
+                             "permiso": "usuario"})
             json.dump(usuarios, u, ensure_ascii= False, indent=4)
             return jsonify({"usuario registrado": datosRegistro["nombre"]}), 200
         
@@ -156,6 +158,8 @@ def peliculas_director(director):
         for pelicula in peliculas:
             if pelicula["director"] == director:
                 peliculas_director.append(pelicula)
+        if len(peliculas_director) == 0:
+            return jsonify({"error": "no hay peliculas dirigidas por ese director"}), 400
         return jsonify({"peliculas con mismo director": peliculas_director}), 200
     
 #Endpoint peliculas con imagen
@@ -195,18 +199,22 @@ def nueva_pelicula():
                             "director": peliculaNueva["director"], 
                             "genero": peliculaNueva["genero"], 
                             "imagen": peliculaNueva["imagen"], 
-                            "sinopsis": peliculaNueva["sinopsis"]}
+                            "sinopsis": peliculaNueva["sinopsis"],
+                            "visualizaciones": 0}
             peliculas.append(nuevaPelicula)
         with open("peliculas.json", "w", encoding="utf-8") as p:
-            json.dump(peliculas, p, indent=4)
+            json.dump(peliculas, p, ensure_ascii= False, indent=4)
             return jsonify({"pelicula agregada": nuevaPelicula}), 200
 
 
 #Endpoint de todas las peliculas del sistema
 @app.route("/peliculas")
 def peliculas():
-    with open("peliculas.json", "r", encoding="utf-8") as peliculas:
-        return jsonify({"peliculas":json.load(peliculas)}), 200
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        with open("peliculas.json", "r", encoding="utf-8") as peliculas:
+            return jsonify({"peliculas":json.load(peliculas)}), 200
     
 @app.route("/peliculas/<int:id>")
 def pelicula(id):
@@ -217,6 +225,9 @@ def pelicula(id):
             peliculas = json.load(peliculas)
             for pelicula in peliculas:
                 if pelicula["id"] == id:
+                    with open("peliculas.json", "w", encoding="utf-8") as p:
+                        pelicula["visualizaciones"] += 1
+                        json.dump(peliculas, p, ensure_ascii= False, indent=4)
                     return jsonify({"pelicula": pelicula}), 200
             return jsonify({"error": "no existe pelicula con ese id"}), 400
 
@@ -243,7 +254,7 @@ def modificar_pelicula(id):
                     if "sinopsis" in editarPelicula:
                         pelicula["sinopsis"] = editarPelicula["sinopsis"]
         with open("peliculas.json", "w", encoding="utf-8") as p:
-            json.dump(peliculas, p, indent=4)
+            json.dump(peliculas, p, ensure_ascii= False, indent=4)
         with open("peliculas.json", "r", encoding="utf-8") as p:
             peliculas = json.load(p) 
             for pelicula in peliculas:
@@ -256,7 +267,6 @@ def eliminar_pelicula(id):
     if not "usuario" in session:
         return jsonify({"error": "no hay usuario logueado"}), 401
     else:
-        #eliminar una pelicula solo si esta no tiene comentarios de otros usuarios
         with open("comentarios.json", "r", encoding="utf-8") as comentarios:
             comentarios = json.load(comentarios)
             for comentario in comentarios:
@@ -269,7 +279,7 @@ def eliminar_pelicula(id):
                 if pelicula["id"] == id:
                     peliculas.remove(pelicula)
         with open("peliculas.json", "w", encoding="utf-8") as p:
-            json.dump(peliculas, p, indent=4)
+            json.dump(peliculas, p, ensure_ascii= False, indent=4)
             return jsonify({"pelicula eliminada": pelicula}), 200
         
 #Endpoint comentarios de pelicula
@@ -281,6 +291,8 @@ def comentarios_pelicula(id):
         for comentario in comentarios:
             if comentario["ID-pelicula"] == id:
                 comentariosPelicula.append(comentario)
+        if len(comentariosPelicula) == 0:
+            return jsonify({"error": "esta pelicula no existe o no tiene comentarios"}), 400
         return jsonify({"comentarios de la pelicula": comentariosPelicula}), 200
     
 #agregar comentario a pelicula
@@ -299,7 +311,7 @@ def agregar_comentario(id):
                                "comentario": comentarioNuevo["comentario"]}
             comentarios.append(nuevoComentario)
         with open("comentarios.json", "w", encoding="utf-8") as comentariosNuevos:
-            json.dump(comentarios, comentariosNuevos, indent=4)
+            json.dump(comentarios, comentariosNuevos, ensure_ascii= False,  indent=4)
             return jsonify({"comentario agregado": nuevoComentario}), 200
 
 #modulo publico
@@ -314,23 +326,81 @@ def publico():
         peliculasPublico.sort(key = lambda json: json["id"], reverse=True)
         return jsonify({"ultimas 10 peliculas agregadas": peliculasPublico}), 200  
     
+#puntuar pelicula
+@app.route("/pelicula/<int:id>/puntuacion", methods= ["POST", "DELETE"])
+def puntuacion_pelicula(id):
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        if request.method == "POST":
+        #recibir json con llave puntuacion y si este usuario ya puntuo esta pelicula modificar la puntuacion
+            puntuacion = request.get_json()
+            if puntuacion["puntuacion"] > 10 or puntuacion["puntuacion"] < 1:
+                return jsonify({"error": "la puntuacion debe ser entre 1 y 10"}), 400
+            with open("puntuaciones.json", "r", encoding="utf-8") as p:
+                puntuaciones = json.load(p)
+                for puntuacionPelicula in puntuaciones:
+                    if puntuacionPelicula["ID-pelicula"] == id:
+                        if puntuacionPelicula["autor"] == session["usuario"]:
+                            puntuacionPelicula["puntuacion"] = puntuacion["puntuacion"]
+                            with open("puntuaciones.json", "w", encoding="utf-8") as p:
+                                json.dump(puntuaciones, p, ensure_ascii= False, indent=4)
+                                return jsonify({"puntuacion modificada": puntuacionPelicula}), 200
+            with open("puntuaciones.json", "r", encoding="utf-8") as p:
+                puntuaciones = json.load(p)
+                nuevaPuntuacion = {"ID-pelicula": id, 
+                                   "autor": session["usuario"], 
+                                   "puntuacion": puntuacion["puntuacion"]}
+                puntuaciones.append(nuevaPuntuacion)
+            with open("puntuaciones.json", "w", encoding="utf-8") as p:
+                json.dump(puntuaciones, p, ensure_ascii= False, indent=4)
+                return jsonify({"puntuacion agregada": nuevaPuntuacion}), 200
+        else:
+            with open("puntuaciones.json", "r", encoding="utf-8") as p:
+                puntuaciones = json.load(p)
+                for puntuacionPelicula in puntuaciones:
+                    if puntuacionPelicula["ID-pelicula"] == id:
+                        if puntuacionPelicula["autor"] == session["usuario"]:
+                            puntuaciones.remove(puntuacionPelicula)
+                            with open("puntuaciones.json", "w", encoding="utf-8") as p:
+                                json.dump(puntuaciones, p, ensure_ascii= False, indent=4)
+                                return jsonify({"puntuacion eliminada": puntuacionPelicula}), 200
+            return jsonify({"error": "usted no puntuo esta pelicula"}), 400
+
+
+    
+    
 #verificar que sos admin
 @app.route("/admin")
 def admin():
     if not "usuario" in session:
         return jsonify({"error": "no hay usuario logueado"}), 401
     else:
-        with open("usuarios.json", "r", encoding="utf-8") as u:
-            usuarios = json.load(u)
-            for usuario in usuarios:
-                if usuario["nombre"] == session["usuario"]:
-                    if usuario["permiso"] == "admin":
-                        return jsonify({"permiso": "admin"}), 200
-                    else:
-                        return jsonify({"permiso": "usuario"}), 200
+        return jsonify({"usuario": session["permiso"]}), 200
+
+#asignar nuevo admin
+@app.route("/admin", methods= ["POST"])
+def asignar_admin():
+    if not "usuario" in session:
+        return jsonify({"error": "no hay usuario logueado"}), 401
+    else:
+        if session["permiso"] == "admin":
+            nuevoAdmin = request.get_json()
+            with open("usuarios.json", "r", encoding="utf-8") as u:
+                usuarios = json.load(u)
+                for usuario in usuarios:
+                    if usuario["nombre"] == nuevoAdmin["usuario"]:
+                        usuario["permiso"] = "admin"
+                        with open("usuarios.json", "w", encoding="utf-8") as u:
+                            json.dump(usuarios, u, ensure_ascii= False, indent=4)
+                            return jsonify({"nuevo admin": nuevoAdmin}), 200
+                return jsonify({"error": "el usuario no existe"}), 404
+        else:
+            return jsonify({"error": "solo los admin pueden agregar otros admin"}), 401
+
                     
 
 
 
 if __name__ == "__main__": 
-	app.run(debug = True, port=8000)
+	app.run(debug = True, host="localhost", port=27015)

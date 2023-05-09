@@ -5,7 +5,8 @@
         "director": "Frank Darabont",
         "genero": "Drama",
         "sinopsis": "Andy Dufresne es encarcelado por matar a su esposa y al amante de esta. Tras una dura adaptacion, intenta mejorar las condiciones de la prision y dar esperanza a sus companeros.",
-        "imagen": "1.png"
+        "imagen": "1.png",
+        "visualizaciones": 0
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "director": "Francis Ford Coppola",
         "genero": "Drama",
         "sinopsis": "El envejecido patriarca de una dinastia del crimen organizado en la ciudad de Nueva York de la posguerra transfiere el control de su imperio clandestino a su reacio hijo menor.",
-        "imagen": "2.jpg"
+        "imagen": "2.jpg",
+        "visualizaciones": 0
     },
     {
         "id": 3,
@@ -21,15 +23,17 @@
         "director": "Christopher Nolan",
         "genero": "Accion",
         "sinopsis": "Cuando la amenaza conocida como el Joker causa estragos y el caos en Gotham City, Batman debe aceptar una de las mayores pruebas psicologicas y fisicas para luchar contra la injusticia.",
-        "imagen": "3.jpg"
+        "imagen": "3.jpg",
+        "visualizaciones": 0
     },
     {
         "id": 4,
-        "titulo": "El padrino (parte II)",
-        "director": "Francis Ford Coppola",
+        "titulo": "pppp",
+        "director": "Peter Jackson",
         "genero": "Drama",
         "sinopsis": "Se retratan los inicios de la vida y la carrera de Vito Corleone en el Nueva York de los anos 20, mientras su hijo, Michael, amplia y refuerza su control sobre el sindicato del crimen familiar.",
-        "imagen": "4.jpg"
+        "imagen": "4.jpg",
+        "visualizaciones": 4
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "sinopsis": "dsadsadas15",
-        "imagen": "sdasda15"
+        "imagen": "sdasda15",
+        "visualizaciones": 4
     },
     {
         "id": 8,
@@ -45,7 +50,8 @@
         "director": "Peter Jackson",
         "genero": "Fantasia",
         "sinopsis": "Gandalf y Aragorn lideran el mundo de los hombres contra la armada de Sauron para distraer su atencion de Frodo y Sam, quienes se aproximan al Monte del Destino con el Anillo Unico.",
-        "imagen": "8.jpg"
+        "imagen": "8.jpg",
+        "visualizaciones": 0
     },
     {
         "id": 10,
@@ -53,15 +59,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "sinopsis": "dsadseeeeeeeeeeeeeadas15",
-        "imagen": "sdasda15"
-    },
-    {
-        "id": 11,
-        "titulo": "El bueno, el feo y el malo",
-        "director": "Sergio Leone",
-        "genero": "Accion",
-        "sinopsis": "Durante la Guerra de Secesion, tres cazarrecompensas se lanzan a la busqueda de un tesoro que ninguno puede localizar sin la ayuda de los otros dos.",
-        "imagen": "11.jpg"
+        "imagen": "sdasda15",
+        "visualizaciones": 0
     },
     {
         "id": 12,
@@ -69,7 +68,8 @@
         "director": "Robert Zemeckis",
         "genero": "Comedia",
         "sinopsis": "Las presidencias de Kennedy y Johnson, los acontecimientos de Vietnam, el Watergate y otros eventos historicos se desarrollan a traves de la perspectiva de un hombre de Alabama con un coeficiente intelectual de 75.",
-        "imagen": "12.jpg"
+        "imagen": "12.jpg",
+        "visualizaciones": 0
     },
     {
         "id": 13,
@@ -77,7 +77,8 @@
         "director": "Sam Peckinpah",
         "genero": "Aventuras",
         "sinopsis": "",
-        "imagen": ""
+        "imagen": "",
+        "visualizaciones": 0
     },
     {
         "id": 14,
@@ -85,7 +86,8 @@
         "director": "Sam Peckinpah",
         "genero": "Aventuras",
         "sinopsis": "",
-        "imagen": ""
+        "imagen": "",
+        "visualizaciones": 0
     },
     {
         "id": 15,
@@ -93,7 +95,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "imagen": "sdasda15",
-        "sinopsis": "dsadsadas15"
+        "sinopsis": "dsadsadas15",
+        "visualizaciones": 0
     },
     {
         "id": 16,
@@ -101,7 +104,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "imagen": "sdasda15",
-        "sinopsis": "dsadsadas15"
+        "sinopsis": "dsadsadas15",
+        "visualizaciones": 0
     },
     {
         "id": 17,
@@ -109,7 +113,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "imagen": "sdasda15",
-        "sinopsis": "dsadsadas15"
+        "sinopsis": "dsadsadas15",
+        "visualizaciones": 0
     },
     {
         "id": 18,
@@ -117,7 +122,8 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "imagen": "sdasda15",
-        "sinopsis": "dsadsadas15"
+        "sinopsis": "dsadsadas15",
+        "visualizaciones": 0
     },
     {
         "id": 19,
@@ -125,6 +131,25 @@
         "director": "asd215",
         "genero": "sdadasdassa15",
         "imagen": "sdasda15",
-        "sinopsis": "dsadsadas15"
+        "sinopsis": "dsadsadas15",
+        "visualizaciones": 0
+    },
+    {
+        "id": 20,
+        "titulo": "dasdsa",
+        "director": "Roman Polanski",
+        "genero": "Terror",
+        "imagen": "dsadasda",
+        "sinopsis": "texto",
+        "visualizaciones": 0
+    },
+    {
+        "id": 21,
+        "titulo": "peli",
+        "director": "Martin Scorsese",
+        "genero": "Aventuras",
+        "imagen": "eee",
+        "sinopsis": "eee",
+        "visualizaciones": 0
     }
 ]

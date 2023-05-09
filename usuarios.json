@@ -22,11 +22,16 @@
     {
         "nombre": "dani2",
         "contraseña": "dani123",
-        "permiso": "usuario"
+        "permiso": "admin"
     },
     {
         "nombre": "dani3",
         "contraseña": "dani123",
-        "permisos": "usuario"
+        "permiso": "admin"
+    },
+    {
+        "nombre": "test",
+        "contraseña": "test123",
+        "permiso": "admin"
     }
 ]
